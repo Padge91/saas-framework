@@ -1,15 +1,13 @@
 
 
 from flask import Flask
-from api.v1.auth.auth import auth_app
-from api.v1.scraper.scraper  import scraper_app
+from api.v1.accounts import accounts_app
+from api.v1.users import users_app
 
 app = Flask(__name__)
 
-
-app.register_blueprint(auth_app, url_prefix="/auth")
-app.register_blueprint(scraper_app, url_prefix="/scraper")
-
+app.register_blueprint(users_app, url_prefix="/users")
+app.register_blueprint(accounts_app, url_prefix="/accounts")
 
 # index
 @app.route("/", methods=["GET"])
